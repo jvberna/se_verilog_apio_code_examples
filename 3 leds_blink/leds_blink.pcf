@@ -1,0 +1,12 @@
+# Configuracion del Reloj principal (12 MHz)
+set_io CLK 49
+
+# Configuracion del LED de Usuario 
+set_io LED7 45
+set_io LED6 44
+set_io LED5 43
+set_io LED4 42
+set_io LED3 41
+set_io LED2 39
+set_io LED1 38
+set_io LED0 37

@@ -1,0 +1,49 @@
+module button_led_toggle (
+    input wire CLK,        // Señal de reloj de la FPGA (necesaria para la lógica síncrona)
+    input wire BTN,        // Entrada del botón (activa en alto)
+    output reg LED         // Salida al LED
+);
+
+// --- 1. Lógica para la Detección de Flanco (Edge Detection) ---
+
+// Registros para almacenar el estado anterior del botón
+reg btn_current = 1'b1; // Estado actual (se inicializa en 1 para evitar un cambio al inicio)
+reg btn_last = 1'b1;    // Estado anterior
+
+// Registro para almacenar la señal de "presionado" (solo por un ciclo de reloj)
+reg btn_pressed = 1'b0;
+
+// Lógica síncrona (se ejecuta en cada flanco de subida del reloj)
+always @(posedge CLK) begin
+    // Mueve el estado actual a 'last'
+    btn_last <= btn_current;
+    
+    // Almacena el nuevo estado del pin BTN en 'current'
+    btn_current <= BTN;
+    
+    // Detecta un flanco de bajada (presionado): BTN_last era '1' y BTN_current es '0'
+    // **Nota:** Si tu botón es 'Activo en Bajo', la pulsación es '0'.
+    // Usaremos flanco de bajada (de 1 a 0) como la señal de "se presionó".
+    if (btn_last == 1'b1 && btn_current == 1'b0) begin
+        btn_pressed <= 1'b1; // Señal de pulsación
+    end else begin
+        btn_pressed <= 1'b0; // No hay pulsación
+    end
+end
+
+// --- 2. Lógica del Toggle (Encendido/Apagado) ---
+
+// Este bloque usa la señal de un solo ciclo 'btn_pressed' para cambiar el LED
+always @(posedge CLK) begin
+    if (btn_pressed) begin
+        // Cambia el estado del LED (de 0 a 1 o de 1 a 0)
+        LED <= ~LED;
+    end
+end
+
+// Inicializa el LED apagado al inicio
+initial begin
+    LED = 1'b0; 
+end
+
+endmodule

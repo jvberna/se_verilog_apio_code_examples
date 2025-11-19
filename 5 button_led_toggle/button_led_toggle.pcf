@@ -1,0 +1,15 @@
+# =========================================================
+# Restricciones de pines para la FPGA Alhambra II (Ice40)
+# =========================================================
+
+# --- 1. CLOCK (Reloj Principal) ---
+# El reloj principal de la Alhambra II es de 12 MHz
+set_io CLK 49
+
+# --- 2. BOTÓN (BTN0) ---
+# Este botón está "Activo en Alto" (presionado = 1, no presionado = 0)
+set_io BTN 34 
+
+# --- 3. LED (LED Verde) ---
+# Uno de los LEDs de usuario de la placa 
+set_io LED 45

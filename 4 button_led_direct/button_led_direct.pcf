@@ -1,0 +1,5 @@
+# Este botón está "Activo en Bajo" (presionado = 0, no presionado = 1)
+set_io BTN 34 
+
+# Uno de los LEDs de usuario de la placa
+set_io LED 45
