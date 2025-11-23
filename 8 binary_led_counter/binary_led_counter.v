@@ -46,7 +46,7 @@ module binary_led_counter (
             
             // Si el contador de segundos ha alcanzado el límite (1 segundo)
             if (sec_counter == ONE_SEC_LIMIT) begin
-                
+               
                 // 1. Resetear el contador de segundos (preparar para el próximo segundo)
                 sec_counter <= 0;
                 
@@ -56,7 +56,7 @@ module binary_led_counter (
                 binary_count <= binary_count + 1;
                 
                 // 3. Actualizar los LEDs con el nuevo valor binario
-                //LED_OUT <= binary_count + 1; 
+                LED_OUT <= binary_count + 1; 
                 
                 
             end else begin

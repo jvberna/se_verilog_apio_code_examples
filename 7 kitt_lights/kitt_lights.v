@@ -38,9 +38,9 @@ module kitt_lights (
         if (delay_done) begin // Solo actua cuando el retardo ha terminado
             
             // Inicializar el patrón de LEDs
-            //LED_OUT <= 8'b0000_0000; 
+            LED_OUT <= 8'b0000_0000; 
             //LED_OUT[current_led_index] <= 1'b0; // no funcionaría correctamente
-            Mueve el LED en la dirección actual
+            //Mueve el LED en la dirección actual
             if (direction == 1'b0) begin // Moviendo a la derecha (0 -> 7)
                 if (current_led_index == 7) begin // Si llegó al final (LED7)
                     direction <= 1'b1; // Cambiar dirección a izquierda

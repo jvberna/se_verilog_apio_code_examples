@@ -7,8 +7,8 @@ module long_press_toggle (
     // --- 1. Definición de Parámetros de Tiempo ---
     
     // Frecuencia del reloj: 12,000,000 Hz (12 MHz)
-    //parameter CLK_FREQ = 12_000_000;
-    parameter CLK_FREQ = 1_000;
+    parameter CLK_FREQ = 12_000_000;
+    //parameter CLK_FREQ = 1_000;
     
     // Valor máximo del contador para 1 segundo: 1.0s * 12 MHz = 12,000,000 ciclos
     parameter ONE_SECOND = CLK_FREQ;
